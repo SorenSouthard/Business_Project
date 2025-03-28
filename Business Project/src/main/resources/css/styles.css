@@ -1,0 +1,166 @@
+/* Global Styles */
+/* Set default background and font for the entire application */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Title Text Styling */
+/* Used for main headings and section titles */
+.title-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #2c3e50;
+    -fx-margin-bottom: 20px;
+}
+
+/* Label Styling */
+/* Default style for all text labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495e;
+}
+
+/* Form Input Fields */
+/* Common styles for text fields, password fields, and combo boxes */
+.text-field, .password-field, .combo-box {
+    -fx-pref-width: 250px;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+}
+
+/* Focus states for input fields */
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: #3498db;
+    -fx-background-color: #ecf0f1;
+}
+
+/* Button Styling */
+/* Primary action button style */
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-min-width: 100px;
+}
+
+/* Button hover and pressed states */
+.primary-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #2472a4;
+}
+
+/* Message Labels */
+/* Used for feedback messages (success/error) */
+.message-label {
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+/* Error message styling */
+.error-message {
+    -fx-text-fill: #e74c3c;
+}
+
+/* Success message styling */
+.success-message {
+    -fx-text-fill: #27ae60;
+}
+
+/* Table Styling */
+/* Main table container */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+}
+
+/* Table header styling */
+.table-view .column-header {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Alternating row colors */
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+/* Selected row styling */
+.table-row-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* Form Container Styling */
+/* Container for form elements */
+.form-container {
+    -fx-spacing: 10;
+    -fx-padding: 20;
+}
+
+/* Form field styling */
+.form-field {
+    -fx-pref-width: 300px;
+}
+
+/* Form label styling */
+.form-label {
+    -fx-font-weight: bold;
+}
+
+/* Dialog Styling */
+/* Main dialog container */
+.dialog-pane {
+    -fx-background-color: white;
+}
+
+/* Dialog header styling */
+.dialog-pane .header-panel {
+    -fx-background-color: #34495e;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+}
+
+/* Menu Bar Styling */
+/* Main menu bar */
+.menu-bar {
+    -fx-background-color: #34495e;
+}
+
+/* Menu text color */
+.menu-bar .label {
+    -fx-text-fill: white;
+}
+
+/* Menu item styling */
+.menu-item {
+    -fx-padding: 5px 10px;
+}
+
+/* Menu item hover effect */
+.menu-item:hover {
+    -fx-background-color: #3498db;
+}
+
+/* Status Bar Styling */
+/* Bottom status bar */
+.status-bar {
+    -fx-padding: 5px;
+    -fx-background-color: #ecf0f1;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #bdc3c7;
+} 

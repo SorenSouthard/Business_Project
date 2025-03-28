@@ -1,0 +1,102 @@
+@startuml Database Schema
+
+' Entities
+entity "users" as users {
+    + user_id: VARCHAR(50) <<PK>>
+    --
+    username: VARCHAR(50)
+    password_hash: VARCHAR(255)
+    role: ENUM
+    created_at: TIMESTAMP
+    last_login: TIMESTAMP
+}
+
+entity "employees" as employees {
+    + empid: VARCHAR(50) <<PK>>
+    --
+    name: VARCHAR(100)
+    ssn: VARCHAR(11)
+    hire_date: DATE
+    salary: DECIMAL(10,2)
+}
+
+entity "division" as division {
+    + ID: INT <<PK>>
+    --
+    division_name: VARCHAR(100)
+}
+
+entity "job_titles" as job_titles {
+    + job_title_id: INT <<PK>>
+    --
+    title_name: VARCHAR(100)
+}
+
+entity "city" as city {
+    + city_id: INT <<PK>>
+    --
+    city_name: VARCHAR(100)
+}
+
+entity "state" as state {
+    + state_id: INT <<PK>>
+    --
+    state_name: VARCHAR(100)
+}
+
+entity "address" as address {
+    + address_id: INT <<PK>>
+    --
+    empid: VARCHAR(50) <<FK>>
+    street: VARCHAR(255)
+    city_id: INT <<FK>>
+    state_id: INT <<FK>>
+    zip: VARCHAR(10)
+}
+
+entity "employee_division" as emp_div {
+    + empid: VARCHAR(50) <<FK>>
+    + div_ID: INT <<FK>>
+}
+
+entity "employee_job_titles" as emp_job {
+    + empid: VARCHAR(50) <<FK>>
+    + job_title_id: INT <<FK>>
+}
+
+entity "pay_statements" as payroll {
+    + statement_id: INT <<PK>>
+    --
+    empid: VARCHAR(50) <<FK>>
+    pay_date: DATE
+    gross_salary: DECIMAL(10,2)
+    net_salary: DECIMAL(10,2)
+    deductions: DECIMAL(10,2)
+}
+
+' Relationships
+users ||--o{ employees
+employees ||--o{ address
+employees }o--o{ division
+employees }o--o{ job_titles
+address }o--|| city
+address }o--|| state
+employees ||--o{ payroll
+
+' Notes
+note right of users
+  Primary authentication
+  and user management
+end note
+
+note right of employees
+  Core employee
+  information
+end note
+
+note right of payroll
+  Payroll and
+  compensation data
+end note
+
+@enduml 

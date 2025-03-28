@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Admin Dashboard: Provides full CRUD functionality and system management -->
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.companyZ.ems.controllers.AdminDashboardController"
+      stylesheets="@../css/styles.css"
+      spacing="10"
+      prefWidth="800"
+      prefHeight="600">
+
+    <!-- Top Menu Bar -->
+    <MenuBar>
+        <Menu text="File">
+            <MenuItem text="Refresh" onAction="#handleRefresh"/>
+            <SeparatorMenuItem/>
+            <MenuItem text="Logout" onAction="#handleLogout"/>
+        </Menu>
+        <Menu text="Employee">
+            <MenuItem text="Add New" onAction="#handleAddEmployee"/>
+            <MenuItem text="Search" onAction="#handleSearchEmployee"/>
+        </Menu>
+        <Menu text="Reports">
+            <MenuItem text="Pay Statements" onAction="#handlePayStatementReport"/>
+            <MenuItem text="Division Pay" onAction="#handleDivisionPayReport"/>
+            <MenuItem text="Job Title Pay" onAction="#handleJobTitlePayReport"/>
+        </Menu>
+    </MenuBar>
+
+    <!-- Main Content Area -->
+    <SplitPane VBox.vgrow="ALWAYS">
+        <!-- Left Panel: Employee List -->
+        <VBox spacing="5">
+            <padding><Insets all="10"/></padding>
+            
+            <!-- Search Controls -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search employees..." HBox.hgrow="ALWAYS"/>
+                <Button text="Search" onAction="#handleSearch"/>
+            </HBox>
+            
+            <!-- Employee Table -->
+            <TableView fx:id="employeeTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="empIdColumn" text="ID"/>
+                    <TableColumn fx:id="nameColumn" text="Name"/>
+                    <TableColumn fx:id="divisionColumn" text="Division"/>
+                    <TableColumn fx:id="jobTitleColumn" text="Job Title"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <!-- Right Panel: Employee Details -->
+        <VBox spacing="10">
+            <padding><Insets all="10"/></padding>
+            
+            <!-- Employee Information Form -->
+            <GridPane vgap="5" hgap="5">
+                <Label text="Employee ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="empIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Label text="Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="nameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <Label text="SSN:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="ssnField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <Label text="Hire Date:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="hireDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                
+                <Label text="Salary:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="salaryField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <Label text="Division:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="divisionComboBox" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                
+                <Label text="Job Title:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="jobTitleComboBox" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- Address Information -->
+            <TitledPane text="Address Information" expanded="false">
+                <GridPane vgap="5" hgap="5">
+                    <Label text="Street:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="streetField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    
+                    <Label text="City:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cityComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    
+                    <Label text="State:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="stateComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    
+                    <Label text="ZIP:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="zipField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                </GridPane>
+            </TitledPane>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Save" onAction="#handleSave" styleClass="primary-button"/>
+                <Button text="Delete" onAction="#handleDelete"/>
+                <Button text="Clear" onAction="#handleClear"/>
+            </HBox>
+        </VBox>
+    </SplitPane>
+
+    <!-- Status Bar -->
+    <HBox styleClass="status-bar">
+        <Label fx:id="statusLabel" text="Ready"/>
+    </HBox>
+</VBox> 

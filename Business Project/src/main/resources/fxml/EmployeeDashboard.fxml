@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Employee Dashboard: Provides read-only view of personal information and pay statements -->
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.companyZ.ems.controllers.EmployeeDashboardController"
+      stylesheets="@../css/styles.css"
+      spacing="10"
+      prefWidth="600"
+      prefHeight="400">
+
+    <!-- Top Menu Bar -->
+    <MenuBar>
+        <Menu text="File">
+            <MenuItem text="Refresh" onAction="#handleRefresh"/>
+            <SeparatorMenuItem/>
+            <MenuItem text="Logout" onAction="#handleLogout"/>
+        </Menu>
+        <Menu text="View">
+            <MenuItem text="Personal Information" onAction="#handleViewPersonalInfo"/>
+            <MenuItem text="Pay Statements" onAction="#handleViewPayStatements"/>
+        </Menu>
+    </MenuBar>
+
+    <!-- Main Content Area -->
+    <TabPane VBox.vgrow="ALWAYS">
+        <!-- Personal Information Tab -->
+        <Tab text="Personal Information" closable="false">
+            <VBox spacing="10">
+                <padding><Insets all="10"/></padding>
+                
+                <!-- Employee Information (Read-only) -->
+                <GridPane vgap="5" hgap="5">
+                    <Label text="Employee ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="empIdLabel" styleClass="info-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="nameLabel" styleClass="info-label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Division:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <Label fx:id="divisionLabel" styleClass="info-label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Job Title:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <Label fx:id="jobTitleLabel" styleClass="info-label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Hire Date:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <Label fx:id="hireDateLabel" styleClass="info-label" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <!-- Address Information -->
+                <TitledPane text="Address Information">
+                    <GridPane vgap="5" hgap="5">
+                        <Label text="Street:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="streetLabel" styleClass="info-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        
+                        <Label text="City:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="cityLabel" styleClass="info-label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="State:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="stateLabel" styleClass="info-label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        
+                        <Label text="ZIP:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label fx:id="zipLabel" styleClass="info-label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </TitledPane>
+            </VBox>
+        </Tab>
+
+        <!-- Pay Statements Tab -->
+        <Tab text="Pay Statements" closable="false">
+            <VBox spacing="10">
+                <padding><Insets all="10"/></padding>
+                
+                <!-- Pay Statement Controls -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Date Range:"/>
+                    <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
+                    <Label text="to"/>
+                    <DatePicker fx:id="endDatePicker" promptText="End Date"/>
+                    <Button text="View" onAction="#handleViewPayStatements"/>
+                </HBox>
+                
+                <!-- Pay Statements Table -->
+                <TableView fx:id="payStatementsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="payDateColumn" text="Pay Date"/>
+                        <TableColumn fx:id="grossPayColumn" text="Gross Pay"/>
+                        <TableColumn fx:id="netPayColumn" text="Net Pay"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Status Bar -->
+    <HBox styleClass="status-bar">
+        <Label fx:id="statusLabel" text="Ready"/>
+    </HBox>
+</VBox> 

@@ -1,0 +1,60 @@
+@startuml EMS Use Case Diagram
+
+' Actors
+actor "Admin User" as admin
+actor "Employee User" as employee
+actor "Database" as db
+
+' Main system
+rectangle "Employee Management System" {
+    ' Authentication use cases
+    usecase "Login" as UC1
+    usecase "Logout" as UC2
+    
+    ' Admin use cases
+    usecase "Manage Employees" as UC3
+    usecase "Generate Reports" as UC4
+    usecase "Search Employees" as UC5
+    usecase "Update Employee Data" as UC6
+    usecase "Delete Employee" as UC7
+    
+    ' Employee use cases
+    usecase "View Personal Info" as UC8
+    usecase "View Pay Statement" as UC9
+    usecase "Update Personal Info" as UC10
+}
+
+' Admin relationships
+admin --> UC1
+admin --> UC2
+admin --> UC3
+admin --> UC4
+admin --> UC5
+admin --> UC6
+admin --> UC7
+
+' Employee relationships
+employee --> UC1
+employee --> UC2
+employee --> UC8
+employee --> UC9
+employee --> UC10
+
+' System relationships with database
+UC1 --> db
+UC2 --> db
+UC3 --> db
+UC4 --> db
+UC5 --> db
+UC6 --> db
+UC7 --> db
+UC8 --> db
+UC9 --> db
+UC10 --> db
+
+' Include relationships
+UC3 ..> UC5 : <<include>>
+UC3 ..> UC6 : <<include>>
+UC3 ..> UC7 : <<include>>
+
+@enduml 

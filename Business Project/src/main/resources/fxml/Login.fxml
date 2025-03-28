@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.companyZ.ems.controllers.LoginController"
+      spacing="10"
+      alignment="CENTER"
+      stylesheets="@../css/styles.css"
+      prefWidth="400"
+      prefHeight="300">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Text styleClass="title-text" text="Employee Management System"/>
+    
+    <Label text="Username:"/>
+    <TextField fx:id="usernameField" promptText="Enter username"/>
+    
+    <Label text="Password:"/>
+    <PasswordField fx:id="passwordField" promptText="Enter password"/>
+    
+    <ComboBox fx:id="roleComboBox" promptText="Select Role"/>
+    
+    <Button text="Login" onAction="#handleLogin" styleClass="primary-button"/>
+    
+    <Label fx:id="messageLabel" styleClass="message-label"/>
+</VBox> 

@@ -1,0 +1,34 @@
+@startuml Employee Search Sequence Diagram
+
+actor "Admin User" as admin
+participant "AdminDashboardController" as controller
+participant "EmployeeService" as service
+participant "DatabaseConnection" as db
+database "MySQL Database" as database
+
+' Search process
+admin -> controller: Enter Employee ID
+activate controller
+
+controller -> service: searchEmployees(empId)
+activate service
+
+service -> db: getConnection()
+activate db
+db --> service: Connection
+deactivate db
+
+service -> database: SELECT query with empId
+activate database
+database --> service: ResultSet
+deactivate database
+
+service -> service: processResultSet()
+service --> controller: ObservableList<Employee>
+deactivate service
+
+controller -> controller: updateTableView()
+controller --> admin: Display Results
+deactivate controller
+
+@enduml 
