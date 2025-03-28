@@ -22,7 +22,7 @@ public class DatabaseConnection {
     // TODO: Move these to a secure configuration file
     private static final String URL = "jdbc:mysql://localhost:3306/company_z_ems";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "pass";
 
     /**
      * Establishes and returns a connection to the MySQL database.

@@ -26,8 +26,6 @@
     <Label text="Password:"/>
     <PasswordField fx:id="passwordField" promptText="Enter password"/>
     
-    <ComboBox fx:id="roleComboBox" promptText="Select Role"/>
-    
     <Button text="Login" onAction="#handleLogin" styleClass="primary-button"/>
     
     <Label fx:id="messageLabel" styleClass="message-label"/>

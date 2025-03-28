@@ -32,7 +32,6 @@ public class LoginController {
     private Button loginButton;
     @FXML
     private Button clearButton;
-    
 
     /**
      * Initializes the login controller.

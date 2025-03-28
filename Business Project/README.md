@@ -59,7 +59,8 @@ Detailed documentation including:
 - Test Cases
 
 ## Team Members
-[To be filled with team members]
+- Soren Southard
+
 
 ## License
 Proprietary - Company Z 
