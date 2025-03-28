@@ -35,9 +35,15 @@ public class AuthenticationService {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     String storedHash = rs.getString("password_hash");
-                    return SecurityUtils.verifyPassword(password, storedHash);
+                    boolean passwordMatch = SecurityUtils.verifyPassword(password, storedHash);
+                    // Log the result of password verification
+                    logger.info("Password match for user {}: {}", username, passwordMatch);
+                    return passwordMatch;
+                } else {
+                    // Log if the username was not found
+                    logger.warn("Username not found: {}", username);
+                    return false;
                 }
-                return false;
             }
         }
     }
